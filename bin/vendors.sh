@@ -72,6 +72,9 @@ install_git twig-extensions http://github.com/fabpot/Twig-extensions.git
 # Monolog
 install_git monolog http://github.com/Seldaek/monolog.git
 
+# Doctrine Fixtures
+install_git doctrine-fixtures https://github.com/doctrine/data-fixtures.git
+
 # SensioFrameworkExtraBundle
 mkdir -p $BUNDLES/Sensio/Bundle
 cd $BUNDLES/Sensio/Bundle
@@ -88,6 +91,9 @@ cd $BUNDLES/Symfony/Bundle
 
 # WebConfiguratorBundle
 install_git WebConfiguratorBundle http://github.com/symfony/WebConfiguratorBundle.git
+
+# DoctrineFixturesBundle
+install_git DoctrineFixturesBundle https://github.com/symfony/DoctrineFixturesBundle.git
 
 # Update the bootstrap files
 $DIR/bin/build_bootstrap.php

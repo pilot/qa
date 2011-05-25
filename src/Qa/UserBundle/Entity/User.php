@@ -34,7 +34,7 @@ class User
     protected $email;
 
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm:Column(type="string", length="255", nullable="true")
      *
      * @var string $avatar
      */

@@ -42,7 +42,7 @@ class Question
     protected $content;
 
     /**
-     * @orm:Column(type="integer")
+     * @orm:Column(type="integer", nullable="true")
      *
      * @var integer $views
      */
@@ -218,7 +218,7 @@ class Question
      *
      * @param Qa\UserBundle\Entity\User $user
      */
-    public function setUser(\Qa\QuestionBundle\Entity\User $user)
+    public function setUser(\Qa\UserBundle\Entity\User $user)
     {
         $this->user = $user;
     }

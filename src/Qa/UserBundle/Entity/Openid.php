@@ -20,21 +20,21 @@ class Openid
     /**
      * @orm:Column(type="string", length="255")
      *
-     * @var string $name
+     * @var string $title
      */
     protected $title;
  
     /**
      * @orm:Column(type="string", length="255")
      *
-     * @var string $email
+     * @var string $url
      */
     protected $url;
 
     /**
      * @orm:Column(type="boolean", name="is_primary")
      *
-     * @var string $avatar
+     * @var string $isPrimary
      */
     protected $isPrimary;
 
