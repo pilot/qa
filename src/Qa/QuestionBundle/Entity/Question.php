@@ -1,80 +1,81 @@
 <?php
 
 namespace Qa\QuestionBundle\Entity;
- 
+
+use Doctrine\ORM\Mapping as orm;
 use Doctrine\Common\Collections\ArrayCollection;
  
 /**
- * @orm:Entity
- * @orm:Table(name="question")
- * @orm:HasLifecycleCallbacks
+ * @orm\Entity
+ * @orm\Table(name="question")
+ * @orm\HasLifecycleCallbacks
  */
 class Question
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @orm\Id
+     * @orm\Column(type="integer")
+     * @orm\GeneratedValue(strategy="AUTO")
      *
      * @var integer $id
      */
     protected $id;
  
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      *
      * @var string $title
      */
     protected $title;
  
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      *
      * @var string $slug
      */
     protected $slug;
  
     /**
-     * @orm:Column(type="text")
+     * @orm\Column(type="text")
      *
      * @var string $content
      */
     protected $content;
 
     /**
-     * @orm:Column(type="integer", nullable="true")
+     * @orm\Column(type="integer", nullable="true")
      *
      * @var integer $views
      */
     protected $views;
  
     /**
-     * @orm:Column(type="datetime", name="created_at")
+     * @orm\Column(type="datetime", name="created_at")
      *
      * @var DateTime $createdAt
      */
     protected $createdAt;
  
     /**
-     * @orm:Column(type="datetime", name="updated_at", nullable="true")
+     * @orm\Column(type="datetime", name="updated_at", nullable="true")
      *
      * @var DateTime $updatedAt
      */
     protected $updatedAt;
  
     /**
-     * @orm:ManyToOne(targetEntity="Qa\UserBundle\Entity\User", inversedBy="questions")
-     * @orm:JoinColumn(name="user_id", referencedColumnName="id")
+     * @orm\ManyToOne(targetEntity="Qa\UserBundle\Entity\User", inversedBy="questions")
+     * @orm\JoinColumn(name="user_id", referencedColumnName="id")
      *
      * @var User $user
      */
     protected $user;
  
     /**
-     * @orm:ManyToMany(targetEntity="Tag")
-     * @orm:JoinTable(name="question_has_tag",
-     *     joinColumns={@orm:JoinColumn(name="question_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@orm:JoinColumn(name="tag_id", referencedColumnName="id")}
+     * @orm\ManyToMany(targetEntity="Tag")
+     * @orm\JoinTable(name="question_has_tag",
+     *     joinColumns={@orm\JoinColumn(name="question_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@orm\JoinColumn(name="tag_id", referencedColumnName="id")}
      * )
      *
      * @var ArrayCollection $tags
@@ -265,7 +266,7 @@ class Question
     /**
      * Invoked before the entity is updated.
      *
-     * @orm:PreUpdate
+     * @orm\PreUpdate
      */
     public function preUpdate()
     {

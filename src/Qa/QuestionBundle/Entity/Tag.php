@@ -2,37 +2,39 @@
 
 namespace Qa\QuestionBundle\Entity;
 
+use Doctrine\ORM\Mapping as orm;
+
 /**
- * @orm:Entity
- * @orm:Table(name="tag")
+ * @orm\Entity
+ * @orm\Table(name="tag")
  */
 class Tag
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @orm\Id
+     * @orm\Column(type="integer")
+     * @orm\GeneratedValue(strategy="AUTO")
      * 
      * @var integer $id
      */
     protected $id;
     
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      * 
      * @var string $name;
      */
     protected $name;
 
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      * 
      * @var string $slug;
      */
     protected $slug;
 
     /**
-     * @orm:Column(type="datetime", name="created_at")
+     * @orm\Column(type="datetime", name="created_at")
      * 
      * @var DateTime $createdAt
      */

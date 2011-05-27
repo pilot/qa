@@ -2,52 +2,54 @@
 
 namespace Qa\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as orm;
+
 /**
- * @orm:Entity
- * @orm:Table(name="openid")
+ * @orm\Entity
+ * @orm\Table(name="openid")
  */
 class Openid
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @orm\Id
+     * @orm\Column(type="integer")
+     * @orm\GeneratedValue(strategy="AUTO")
      *
      * @var integer $id
      */
     protected $id;
  
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      *
      * @var string $title
      */
     protected $title;
  
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      *
      * @var string $url
      */
     protected $url;
 
     /**
-     * @orm:Column(type="boolean", name="is_primary")
+     * @orm\Column(type="boolean", name="is_primary")
      *
      * @var string $isPrimary
      */
     protected $isPrimary;
 
     /**
-     * @orm:Column(type="datetime", name="created_at")
+     * @orm\Column(type="datetime", name="created_at")
      *
      * @var DateTime $createdAt
      */
     protected $createdAt;
 
 	/**
-	 * @orm:ManyToOne(targetEntity="User", inversedBy="openids")
-	 * @orm:JoinColumn(name="user_id", referencedColumnName="id")
+	 * @orm\ManyToOne(targetEntity="User", inversedBy="openids")
+	 * @orm\JoinColumn(name="user_id", referencedColumnName="id")
 	 *
 	 * @var User $user
 	 */

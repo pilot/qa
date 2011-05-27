@@ -2,61 +2,62 @@
 
 namespace Qa\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as orm;
 use Doctrine\Common\Collections\ArrayCollection;
- 
+
 /**
- * @orm:Entity
- * @orm:Table(name="user")
+ * @orm\Entity
+ * @orm\Table(name="user")
  */
 class User
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @orm\Id
+     * @orm\Column(type="integer")
+     * @orm\GeneratedValue(strategy="AUTO")
      *
      * @var integer $id
      */
     protected $id;
  
     /**
-     * @orm:Column(type="string", length="255", name="name")
+     * @orm\Column(type="string", length="255", name="name")
      *
      * @var string $name
      */
     protected $name;
  
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm\Column(type="string", length="255")
      *
      * @var string $email
      */
     protected $email;
 
     /**
-     * @orm:Column(type="string", length="255", nullable="true")
+     * @orm\Column(type="string", length="255", nullable="true")
      *
      * @var string $avatar
      */
     protected $avatar;
  
     /**
-     * @orm:Column(type="datetime", name="created_at")
+     * @orm\Column(type="datetime", name="created_at")
      *
      * @var DateTime $createdAt
      */
     protected $createdAt;
  
     /**
-     * @orm:OneToMany(targetEntity="Qa\QuestionBundle\Entity\Question", mappedBy="user")
-     * @orm:OrderBy({"createdAt" = "DESC"})
+     * @orm\OneToMany(targetEntity="Qa\QuestionBundle\Entity\Question", mappedBy="user")
+     * @orm\OrderBy({"createdAt" = "DESC"})
      *
      * @var ArrayCollection $questions
      */
     protected $questions;
 
     /**
-     * @orm:OneToMany(targetEntity="Openid", mappedBy="user")
+     * @orm\OneToMany(targetEntity="Openid", mappedBy="user")
      *
      * @var ArrayCollection $openids
      */
