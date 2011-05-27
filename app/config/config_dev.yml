@@ -4,6 +4,7 @@ imports:
 framework:
     router:   { resource: "%kernel.root_dir%/config/routing_dev.yml" }
     profiler: { only_exceptions: false }
+    test: ~
 
 web_profiler:
     toolbar: true
@@ -21,3 +22,8 @@ monolog:
 
 assetic:
     use_controller: true
+
+behat: ~
+
+behat_mink:
+    start_url: http://qa/app_test.php/

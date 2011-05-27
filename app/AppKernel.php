@@ -31,6 +31,12 @@ class AppKernel extends Kernel
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
+            $bundles[] = new Behat\BehatBundle\BehatBundle();
+            $bundles[] = new Behat\MinkBundle\BehatMinkBundle();
+
+			// include PHPUnit assertions
+			require_once 'PHPUnit/Autoload.php';
+			require_once 'PHPUnit/Framework/Assert/Functions.php';
         }
 
         return $bundles;
