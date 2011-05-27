@@ -9,3 +9,7 @@
  *   };
  *
  */
+
+// Get entity manager
+$world->em = $world->getKernel()->getContainer()
+                   ->get('doctrine.orm.entity_manager');

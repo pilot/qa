@@ -271,4 +271,14 @@ class Question
     {
         $this->updatedAt = new \DateTime();
     }
+
+    /**
+     * Get question object
+     *
+     * @return string $title
+     */
+    public function __toString()
+    {
+	    return $this->getTitle();
+    }
 }
