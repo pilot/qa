@@ -1,3 +1,11 @@
 homepage:
     pattern:  /
     defaults: { _controller: QaQuestionBundle:Default:index }
+    
+question_show:
+    pattern:  /question/{slug}
+    defaults: { _controller: QaQuestionBundle:Default:show }
+
+tag_show:
+    pattern:  /tag/{slug}
+    defaults: { _controller: QaQuestionBundle:Tag:show }

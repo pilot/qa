@@ -1,11 +1,19 @@
 {% extends "QaQuestionBundle::layout.html.twig" %}
 
 {% block content %}
-Hello!
 <div>
     Question:
 	{% for question in questions %}
-	    <li><a href="#">{{ question.title }}</a></li>
+	    <li>
+	        <a href="{{ path('question_show', { 'slug' : question.slug }) }}">{{ question.title }}</a>
+	        <br />
+	        tag:
+	        {% for tag in question.tags %}
+	        <a href="{{ path('tag_show', { 'slug' : tag.slug }) }}">{{ tag.name }}</a>, 
+	        {% endfor %}
+	        &nbsp;
+	        by: {{ question.user.name }}
+	    </li>
 	{% endfor %}
 </div>
 
