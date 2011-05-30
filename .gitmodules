@@ -19,3 +19,6 @@
 [submodule "vendor/doctrine-fixtures"]
 	path = vendor/doctrine-fixtures
 	url = https://github.com/doctrine/data-fixtures.git
+[submodule "vendor/metadata"]
+	path = vendor/metadata
+	url = http://github.com/schmittjoh/metadata.git

@@ -8,6 +8,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('QaQuestionBundle:Default:index.html.twig');
+	    $em = $this->get('doctrine')->getEntityManager();
+	    $questions = $em->getRepository('QaQuestionBundle:Question')->findAll();    
+	
+        return $this->render('QaQuestionBundle:Default:index.html.twig', array('questions' => $questions));
     }
 }

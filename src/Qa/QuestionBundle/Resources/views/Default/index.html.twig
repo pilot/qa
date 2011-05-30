@@ -2,4 +2,11 @@
 
 {% block content %}
 Hello!
+<div>
+    Question:
+	{% for question in questions %}
+	    <li><a href="#">{{ question.title }}</a></li>
+	{% endfor %}
+</div>
+
 {% endblock %}
