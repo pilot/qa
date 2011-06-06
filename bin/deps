@@ -11,3 +11,5 @@
 /bundles/Sensio/Bundle  FrameworkExtraBundle  http://github.com/sensio/SensioFrameworkExtraBundle.git
 /bundles/JMS            SecurityExtraBundle   http://github.com/schmittjoh/SecurityExtraBundle.git
 /bundles/Symfony/Bundle WebConfiguratorBundle http://github.com/symfony/WebConfiguratorBundle.git
+/                       doctrine-fixtures     http://github.com/doctrine/data-fixtures.git
+/bundles/Symfony/Bundle DoctrineFixturesBundle http://github.com/symfony/DoctrineFixturesBundle.git
