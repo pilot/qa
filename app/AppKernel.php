@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Qa\UserBundle\QaUserBundle(),
             new Qa\QuestionBundle\QaQuestionBundle(),
             new Qa\DisqusBundle\QaDisqusBundle(),
+            new Qa\PaginatorBundle\QaPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

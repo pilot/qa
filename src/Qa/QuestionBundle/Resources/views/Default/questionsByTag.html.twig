@@ -2,8 +2,9 @@
 
 {% block content %}
 <div>
+	<h2>by Tag: {{ tag.name }}</h2>
+	<br />
     Questions:
-    <ol>
 	{% for question in questions %}
 	    <li>
 	        <a href="{{ path('question_show', { 'id': question.id, 'slug' : question.slug }) }}">{{ question.title }}</a>
@@ -18,10 +19,6 @@
 	        views: {{ question.views }}
 	    </li>
 	{% endfor %}
-	</ol>
 </div>
 
-{% include 'QaQuestionBundle:Default:paginator.html.twig' %}
-
 {% endblock %}
-

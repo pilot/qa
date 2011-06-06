@@ -5,7 +5,7 @@ namespace Qa\QuestionBundle\Entity;
 use Doctrine\ORM\Mapping as orm;
 
 /**
- * @orm\Entity
+ * @orm\Entity(repositoryClass="Qa\QuestionBundle\Repository\TagRepository")
  * @orm\Table(name="tag")
  */
 class Tag

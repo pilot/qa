@@ -1,0 +1,19 @@
+{% extends "QaQuestionBundle::layout.html.twig" %}
+
+{% block content %}
+<div>
+    <h2>{{ question.title }}</h2>
+    <p>{{ question.content }}</p>
+	<p>
+        tag:
+	    {% for tag in question.tags %}
+	        <a href="{{ path('tag_show', { 'slug' : tag.slug }) }}">{{ tag.name }}</a>{% if not loop.last %}, {% endif %}
+	    {% endfor %}
+	    &nbsp;
+	    by: {{ question.user.name }}
+	    &nbsp;
+	    views: {{ question.views }}
+    </p>
+</div>
+
+{% endblock %}
