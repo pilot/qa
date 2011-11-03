@@ -10,13 +10,16 @@ class DefaultController extends Controller
 {
     public function indexAction($page)
     {
+	    // Get repository
+	    $em = $this->get('doctrine')->getEntityManager();
+	    $repository = $em->getRepository('QaQuestionBundle:Question');
+	
 	    $limit = 2;
 		$midrange = 7;    
-	    $questionsCount = 20;
-	
+	    $questionsCount = $repository->getQuestionsCount();
+	   
 	    // Get all questions
-	    $em = $this->get('doctrine')->getEntityManager();
-	    $questions = $em->getRepository('QaQuestionBundle:Question')->findAll();
+	    $questions = $repository->getQuestions($page, $limit);
 	
 	    $paginator = new Paginator($questionsCount, $page , $limit, $midrange);
 //echo $page, '<pre>'; var_dump($paginator); die;	
