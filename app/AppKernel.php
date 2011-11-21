@@ -18,26 +18,33 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            
-            // To remove
-            new Acme\DemoBundle\AcmeDemoBundle(),
-            
+            new FOS\UserBundle\FOSUserBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+
             // Qa bundles
-            new Qa\UserBundle\QaUserBundle(),
             new Qa\QuestionBundle\QaQuestionBundle(),
-            new Qa\DisqusBundle\QaDisqusBundle(),
             new Qa\PaginatorBundle\QaPaginatorBundle(),
+            new Qa\UserBundle\QaUserBundle(),
+            new Qa\DisqusBundle\QaDisqusBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
-            $bundles[] = new Behat\BehatBundle\BehatBundle();
-            $bundles[] = new Behat\MinkBundle\BehatMinkBundle();
+            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+        }
 
-			// include PHPUnit assertions
-			require_once 'PHPUnit/Autoload.php';
-			require_once 'PHPUnit/Framework/Assert/Functions.php';
+        if ('test' === $this->getEnvironment()) {
+            if (!defined('BEHAT_AUTOLOAD_SF2')) {
+                define('BEHAT_AUTOLOAD_SF2', false);
+                require 'mink/autoload.php';
+                require 'behat/autoload.php';
+            }
+
+            $bundles[] = new Behat\MinkBundle\MinkBundle();
+            $bundles[] = new Behat\BehatBundle\BehatBundle();
         }
 
         return $bundles;

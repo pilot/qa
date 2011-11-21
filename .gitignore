@@ -1,3 +1,9 @@
-/README.md
-app/cache/
-app/logs/
+app/cache
+app/logs
+app/bootstrap*
+app/config/parameters.ini
+app/phpunit.xml
+vendor
+web/bundles
+web/uploads
+web/media
