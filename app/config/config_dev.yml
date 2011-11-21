@@ -22,8 +22,3 @@ monolog:
 
 assetic:
     use_controller: true
-
-behat: ~
-
-behat_mink:
-    start_url: http://qa/app_test.php/
