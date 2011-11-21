@@ -17,7 +17,7 @@ class DefaultController extends Controller
 	    $limit = 2;
 		$midrange = 7;    
 	    $questionsCount = $repository->getQuestionsCount();
-	   
+
 	    // Get all questions
 	    $questions = $repository->getQuestions($page, $limit);
 	

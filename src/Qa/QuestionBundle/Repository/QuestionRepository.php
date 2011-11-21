@@ -35,6 +35,6 @@ class QuestionRepository extends EntityRepository
 	    $dql = 'SELECT count(q.id) FROM Qa\QuestionBundle\Entity\Question q';
 	    $query = $this->getEntityManager()->createQuery($dql);
 	    
-	    return $query->getResult();
+	    return $query->getSingleScalarResult();
     }
 }
