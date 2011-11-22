@@ -2,11 +2,11 @@
 
 {% block content %}
 <div>
-    Questions:
-    <ol>
+    Questions: {{ page ~ '-' ~ limit ~ '--' ~ questions|length }}
+    <ol start="{{ start }}">
 	{% for question in questions %}
 	    <li>
-	        <a href="{{ path('question_show', { 'id': question.id, 'slug' : question.slug }) }}">{{ question.title }}</a>
+	        [{{ question.id }}] <a href="{{ path('question_show', { 'id': question.id, 'slug' : question.slug }) }}">{{ question.title }}</a>
 	        <br />
 	        tag:
 	        {% for tag in question.tags %}

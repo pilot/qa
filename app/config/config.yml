@@ -76,3 +76,7 @@ avalanche_imagine:
         poster_normal:
             type:    thumbnail
             options: { size: [210, 328], mode: outbound }
+
+# QA engine parameters
+parameters:
+    questions_per_page: 5

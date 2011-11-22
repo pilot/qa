@@ -8,22 +8,31 @@ class QuestionRepository extends EntityRepository
 {
 	public function getQuestions($page, $limit = 10)
 	{
-		$dql = 'SELECT q, u, t FROM Qa\QuestionBundle\Entity\Question q ' .
-		       'INNER JOIN q.user u INNER JOIN q.tags t ORDER BY q.createdAt DESC';
+		$dql = 'SELECT q
+                FROM Qa\QuestionBundle\Entity\Question q 
+                ORDER BY q.createdAt DESC';
 
-		$query = $this->getEntityManager()->createQuery($dql);
-		$query->setFirstResult($limit);
-		$query->setMaxResults($page * $limit);
+		$query = $this->_em->createQuery($dql);
+		
+        if ($page > 1) {
+            $query->setFirstResult(($page - 1) * $limit);
+        }
+		
+        $query->setMaxResults($limit);
 		
 		return $query->getResult();
 	}
 	
     public function getQuestionsByTag($slug, $limit = 10)
     {
-		$dql = 'SELECT q, u FROM Qa\QuestionBundle\Entity\Question q ' .
-               'INNER JOIN q.user u INNER JOIN q.tags t WHERE t.slug = :slug ORDER BY q.createdAt DESC';
+		$dql = 'SELECT q, u 
+                FROM Qa\QuestionBundle\Entity\Question q
+                INNER JOIN q.user u 
+                INNER JOIN q.tags t 
+                WHERE t.slug = :slug 
+                ORDER BY q.createdAt DESC';
 
-        $query = $this->getEntityManager()->createQuery($dql);
+        $query = $this->_em->createQuery($dql);
         $query->setParameter('slug', $slug);
         $query->setMaxResults($limit);
 
@@ -33,7 +42,7 @@ class QuestionRepository extends EntityRepository
     public function getQuestionsCount()
     {
 	    $dql = 'SELECT count(q.id) FROM Qa\QuestionBundle\Entity\Question q';
-	    $query = $this->getEntityManager()->createQuery($dql);
+	    $query = $this->_em->createQuery($dql);
 	    
 	    return $query->getSingleScalarResult();
     }
