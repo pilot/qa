@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 
 class QuestionRepository extends EntityRepository
 {
-	public function getQuestions($page, $limit = 10)
+	public function getQuestions($page = 1, $limit = 10)
 	{
 		$dql = 'SELECT q
                 FROM Qa\QuestionBundle\Entity\Question q 
@@ -14,8 +14,8 @@ class QuestionRepository extends EntityRepository
 
 		$query = $this->_em->createQuery($dql);
 		
-        if ($page > 1) {
-            $query->setFirstResult(($page - 1) * $limit);
+        if ($page) {
+            $query->setFirstResult($page * $limit);
         }
 		
         $query->setMaxResults($limit);
@@ -42,6 +42,7 @@ class QuestionRepository extends EntityRepository
     public function getQuestionsCount()
     {
 	    $dql = 'SELECT count(q.id) FROM Qa\QuestionBundle\Entity\Question q';
+
 	    $query = $this->_em->createQuery($dql);
 	    
 	    return $query->getSingleScalarResult();

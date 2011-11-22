@@ -1,10 +1,10 @@
 homepage:
     pattern:  /
-    defaults: { _controller: QaQuestionBundle:Default:index, page: 1}
+    defaults: { _controller: QaQuestionBundle:Default:index}
 
 _items:
-    pattern:  /page{page}
-    defaults: { _controller: QaQuestionBundle:Default:index, page: 1 }
+    pattern:  /{page}
+    defaults: { _controller: QaQuestionBundle:Default:index }
     
 question_show:
     pattern:  /question/{id}/{slug}

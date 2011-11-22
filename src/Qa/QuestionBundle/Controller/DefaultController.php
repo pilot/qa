@@ -4,12 +4,16 @@ namespace Qa\QuestionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Request;
 use Qa\PaginatorBundle\Paginator\Paginator;
 
 class DefaultController extends Controller
 {
-    public function indexAction($page)
+    public function indexAction(Request $request)
     {
+        $page = $request->get('page', 1);
+        $step = $page - 1;
+
 	    // Get repository
 	    $em = $this->getDoctrine()->getEntityManager();
 	    $repository = $em->getRepository('QaQuestionBundle:Question');
@@ -18,14 +22,15 @@ class DefaultController extends Controller
         $limit = $this->container->getParameter('questions_per_page');
     
 	    // Get questions
-	    $questions = $repository->getQuestions($page, $limit);
+	    $questions = $repository->getQuestions($step, $limit);
 	
-	    $paginator = new Paginator($repository->getQuestionsCount(), $page , $limit);
+        // Prepare paginator
+        $paginator = new Paginator($repository->getQuestionsCount(), $page , $limit);
         
         return $this->render('QaQuestionBundle:Default:index.html.twig', array(
             'questions' => $questions, 
           	'paginator' => $paginator,
-            'start' => $page == 1 ? $page : $page * $limit - 1,
+            'start' => $step ? $page * $limit : $page,
             'page' => $page,
             'limit' => $limit
             )
