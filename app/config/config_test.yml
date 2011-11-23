@@ -8,8 +8,8 @@ framework:
 
 mink:
     base_url:         %test_host%/app_test.php/
-    default_session:  goutte
-    goutte:           ~
+    #default_session:  goutte
+    #goutte:           ~
 
 web_profiler:
     toolbar: false

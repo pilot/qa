@@ -1,4 +1,4 @@
-Feature: Lookup a tag
+Feature: See a tag
 
     Scenario:
         Given I am on /tag/ipad
@@ -7,5 +7,5 @@ Feature: Lookup a tag
           And I follow "sleep"
          Then the response status code should be 200
           And I should see question with tags and author:
-          | question | tags | author |
-          | What Really Happens When You Put Your Mac to Sleep? | ["Mac", "sleep", "security"] | pilot |
+          | question                                            | tags                         | author |
+          | What Really Happens When You Put Your Mac to Sleep? | ["Mac", "sleep", "security"] | pilot  |

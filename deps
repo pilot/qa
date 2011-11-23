@@ -72,6 +72,10 @@
     git=https://github.com/Behat/BehatBundle.git
     target=/bundles/Behat/BehatBundle
 
+[mink]
+    git=https://github.com/Behat/Mink.git
+    target=/behat/mink
+
 [MinkBundle]
     git=https://github.com/Behat/MinkBundle.git
     target=/bundles/Behat/MinkBundle
