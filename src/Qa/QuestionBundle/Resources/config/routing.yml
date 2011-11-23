@@ -1,6 +1,6 @@
 homepage:
     pattern:  /
-    defaults: { _controller: QaQuestionBundle:Default:index}
+    defaults: { _controller: QaQuestionBundle:Default:index }
 
 _items:
     pattern:  /{page}
