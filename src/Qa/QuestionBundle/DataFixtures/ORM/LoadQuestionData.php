@@ -41,11 +41,29 @@ class LoadQuestionData extends AbstractFixture implements OrderedFixtureInterfac
 
         $userPull = array('user-one', 'user-two', 'user-three');
         $tagPull = array('tag-one', 'tag-two','tag-three','tag-four');
-        
+
+        // Add questions for test purpose
+        for ($i = 0; $i < 3; $i++) {
+            $question = new Question();
+            $question->setTitle($questionsPull['title'][$i]);
+            $question->setSlug($this->getSlug($question->getTitle()));
+            $question->setContent($questionsPull['content'][$i]);
+            $question->setViews(mt_rand(0,20));
+            $question->setUser($manager->merge($this->getReference($userPull[$i])));
+            
+            // Add tags
+            for ($t = 0; $t < ($i+2); $t++) {
+                $question->addTags($manager->merge($this->getReference($tagPull[$t])));
+            }
+
+            $manager->persist($question);
+        }
+
+        // Add rendomized questions for better user view
         for ($i = 0; $i < 20; $i++) {
 	        $question = new Question();
-	        $question->setTitle($questionsPull['title'][mt_rand(0,2)]);
-	        $question->setSlug($questionsPull['slug'][mt_rand(0,2)]);
+	        $question->setTitle($questionsPull['title'][mt_rand(0,2)] . ' #' . substr(md5($questionsPull['title'][mt_rand(0,2)] . $i), 0, 5));
+	        $question->setSlug($this->getSlug($question->getTitle()));
 	        $question->setContent($questionsPull['content'][mt_rand(0,2)]);
 	        $question->setViews(mt_rand(0,20));
 	        $question->setUser($manager->merge($this->getReference($userPull[mt_rand(0,2)])));
@@ -65,5 +83,16 @@ class LoadQuestionData extends AbstractFixture implements OrderedFixtureInterfac
     public function getOrder()
     {
 	    return 3;
+    }
+
+    public function getSlug($srting)
+    {
+        $result = strtolower($srting);
+
+        $result = preg_replace('/[^a-z0-9\s-]/', '', $result);
+        $result = trim(preg_replace('/[\s-]+/', ' ', $result));
+        $result = preg_replace('/\s/', '-', $result);
+
+        return $result;
     }
 }
