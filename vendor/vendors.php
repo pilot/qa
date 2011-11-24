@@ -24,6 +24,7 @@ $deps = array(
     array('MinkBundle', 'https://github.com/Behat/MinkBundle.git', 'origin/master'),
     array('doctrine-fixtures', 'https://github.com/doctrine/data-fixtures.git', 'origin/master'),
     array('DoctrineFixturesBundle', 'http://github.com/symfony/DoctrineFixturesBundle.git', 'origin/master'),
+    array('swiftmailer', 'http://github.com/swiftmailer/swiftmailer.git', 'origin/master'),
 );
 
 foreach ($deps as $dep) {
