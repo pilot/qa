@@ -13,7 +13,7 @@ before_script:
 #  - php app/console doctrine:fixtures:load -e test
 
 script: 
-  - php app/console behat -e test @QaQuestionBundle
+#  - php app/console behat -e test @QaQuestionBundle
 
 # notifications:
 #   email:
